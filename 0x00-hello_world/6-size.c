@@ -8,10 +8,11 @@
  */
 int main(void)
 {
-	double type_of_double;
-	int type_of_int;
-	char type_of_char;
-	float type_of_float;
+	char charType;
+	int intType;
+	char longType;
+	long longintType;
+	float floatType;
 
 	/*Size of data types */
 	printf("Size of a char: %zu byte (s)\n", sizeof(charType));
