@@ -1,11 +1,11 @@
 #include "main.h"
- /*
- * main - Entry point
- *
- * Return: Always 0 (Success)
+/**
+ * main - A program that prints "_putchar"
+ * Return: int
+ * return: 0
  */
-
 int main(void)
+
 {
 	int i;
 	char p[] = "_putchar";
