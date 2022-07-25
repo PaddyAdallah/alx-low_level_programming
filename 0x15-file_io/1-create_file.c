@@ -1,39 +1,48 @@
-#include <stdio.h>
-#include "holberton.h"
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include "holberton.h"
+
 /**
- * create_file - Creates a file.
- * standard output.
- * @filename: Name of the file to create.
- * @text_content: NULL terminated string to write to the file.
- * Return: 1 on success, -1 on failure.
+ * _strlen - function that returns the length of a string.
+ *
+ * @s: pointer to an string
+ * Return: int
  */
+
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i += 1;
+	}
+	return (i);
+}
+
+/**
+ * create_file - function that create a file
+ * @filename: name of file to be created
+ * @text_content: NULL terminated string to write to the file
+ * Return: 1 on success, -1 on failure
+ */
+
 int create_file(const char *filename, char *text_content)
 {
-	int fd, lenght;
-	ssize_t res_write;
+	int fd, fd_write;
 
 	if (filename == NULL)
 		return (-1);
-	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
 	if (fd == -1)
 		return (-1);
-	if (text_content != NULL)
-	{
-		lenght = 0;
-		while (*(text_content + lenght) != '\0')
-			lenght++;
-		res_write = write(fd, text_content, lenght);
-		if (res_write == -1)
-		{
-			write(1, "fails", 6);
-			return (-1);
-		}
-	}
+	if (text_content == NULL)
+		return (1);
+	fd_write = write(fd, text_content, _strlen(text_content));
 	close(fd);
+	if (fd_write == -1)
+		return (-1);
 	return (1);
 }
